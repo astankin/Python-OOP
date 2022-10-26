@@ -22,14 +22,9 @@ class Library:
         return f'The book "{book_name}" is already rented and will be available in {deis_left} days!'
 
     def return_book(self, author, book_name, user: User):
-        for book in user.books:
-            if book == book_name:
-                user.books.remove(book)
-                self.books_available[author].append(book)
-                for username, records in self.rented_books.items():
-                    if username == user.username:
-                        if book in records:
-                            del records[book]
-
+        if book_name in user.books:
+            user.books.remove(book_name)
+            self.books_available[author].append(book_name)
+            self.rented_books[user.username].pop(book_name)
         else:
             return f"{user.username} doesn't have this book in his/her records!"
