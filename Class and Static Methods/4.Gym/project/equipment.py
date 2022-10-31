@@ -3,12 +3,15 @@ class Equipment:
 
     def __init__(self, name):
         self.name = name
+        self.id = Equipment.get_next_id()
 
     @staticmethod
     def get_next_id():
-        return Equipment.id + 1
+        result = Equipment.id
+        Equipment.id += 1
+        return result
 
     def __repr__(self):
-        return f"Equipment <{Equipment.id}> {self.name}"
+        return f"Equipment <{self.id}> {self.name}"
 
     
