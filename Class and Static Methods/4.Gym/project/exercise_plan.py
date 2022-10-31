@@ -6,3 +6,13 @@ class ExercisePlan:
         self.equipment_id = equipment_id
         self.duration = duration
 
+    @classmethod
+    def from_hours(cls, trainer_id, equipment_id, hours):
+        return cls(trainer_id, equipment_id, hours)
+
+    @staticmethod
+    def get_next_id():
+        return ExercisePlan.id + 1
+
+    def __repr__(self):
+        return f"Plan <{self.id}> with duration {self.duration} minutes"
