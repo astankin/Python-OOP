@@ -57,10 +57,11 @@ class Account:
 
     def __add__(self, other):
         result = Account(f"{self.owner}&{other.owner}", self.amount + other.amount)
-        result._transactions = self._transactions + other._transactions
+        for tx in self:
+            result.add_transaction(tx)
+        for tx in other:
+            result.add_transaction(tx)
         return result
-
-
 
 
 acc = Account('bob', 10)
@@ -87,4 +88,11 @@ print(acc != acc2)
 acc3 = acc + acc2
 print(acc3)
 print(acc3._transactions)
+
+
+
+
+
+
+
 
