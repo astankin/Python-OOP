@@ -18,7 +18,8 @@ class RedBullTeam(FormulaTeam):
             1: 1500000,
             2: 800000,
             8: 20000,
-            10: 10000
+            10: 100000
+
         }
         return sponsors_amount[rase_pos]
 

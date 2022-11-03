@@ -18,6 +18,6 @@ class MercedesTeam(FormulaTeam):
             1: 1000000,
             3: 500000,
             5: 100000,
-            7: 50000
+            7: 500000
         }
         return sponsors_amount[rase_pos]

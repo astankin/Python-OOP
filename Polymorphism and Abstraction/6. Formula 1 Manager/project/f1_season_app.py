@@ -12,8 +12,6 @@ class F1SeasonApp:
     def register_team_for_season(self, team_name: str, budget: int):
         if team_name not in ["Red Bull", "Mercedes"]:
             raise ValueError("Invalid team name!")
-        if budget < 1000000:
-            raise ValueError("F1 is an expensive sport, find more sponsors!")
         if team_name == "Red Bull":
             F1SeasonApp.red_bull_team = RedBullTeam(budget)
         elif team_name == "Mercedes":
