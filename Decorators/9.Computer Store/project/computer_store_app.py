@@ -13,12 +13,12 @@ class ComputerStoreApp:
             raise ValueError(f"{ type_computer } is not a valid type computer!")
 
         if type_computer == "Desktop Computer":
-            computer = DesktopComputer(manufacturer, model)
+            computer = DesktopComputer.create_computer(manufacturer, model)
             self.warehouse.append(computer)
             return computer.configure_computer(processor, ram)
 
         elif type_computer == "Laptop":
-            computer = Laptop(manufacturer, model)
+            computer = Laptop.create_computer(manufacturer, model)
             self.warehouse.append(computer)
             return computer.configure_computer(processor, ram)
 
@@ -28,6 +28,6 @@ class ComputerStoreApp:
                 self.warehouse.remove(computer)
                 self.profits += client_budget - computer.price
                 return f"{ computer } sold for { client_budget }$."
-            return "Sorry, we don't have a computer for you."
+            raise Exception("Sorry, we don't have a computer for you.")
 
 
