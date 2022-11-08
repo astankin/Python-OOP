@@ -13,12 +13,12 @@ class ComputerStoreApp:
             raise ValueError(f"{ type_computer } is not a valid type computer!")
 
         if type_computer == "Desktop Computer":
-            computer = DesktopComputer.create_computer(manufacturer, model)
+            computer = DesktopComputer(manufacturer, model)
             self.warehouse.append(computer)
             return computer.configure_computer(processor, ram)
 
         elif type_computer == "Laptop":
-            computer = Laptop.create_computer(manufacturer, model)
+            computer = Laptop(manufacturer, model)
             self.warehouse.append(computer)
             return computer.configure_computer(processor, ram)
 

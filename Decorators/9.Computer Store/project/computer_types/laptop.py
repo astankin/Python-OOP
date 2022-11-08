@@ -41,8 +41,4 @@ class Laptop(Computer):
     def ram_price(ram):
         return int(math.log2(ram) * 100)
 
-    @classmethod
-    def create_computer(cls, manufacturer, model):
-        return cls(manufacturer, model)
-
 
