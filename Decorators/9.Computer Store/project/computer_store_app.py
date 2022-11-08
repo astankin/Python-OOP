@@ -28,6 +28,6 @@ class ComputerStoreApp:
                 self.warehouse.remove(computer)
                 self.profits += client_budget - computer.price
                 return f"{ computer } sold for { client_budget }$."
-            return "Sorry, we don't have a computer for you."
+            raise Exception("Sorry, we don't have a computer for you.")
 
 
