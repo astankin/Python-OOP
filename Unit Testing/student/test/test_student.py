@@ -51,6 +51,8 @@ class StudentTest(TestCase):
         self.assertEqual("Notes have been updated", result)
         self.assertEqual(["note1", "note2", "new_note"], self.student.courses["web"])
 
+    def test_add_notes_to_not_existing_notes_raises(self):
+
 
 
 
