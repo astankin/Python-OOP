@@ -11,15 +11,18 @@ class MammalTest(TestCase):
         self.assertEqual("name", self.mammal.name)
         self.assertEqual("type", self.mammal.type)
         self.assertEqual("sound", self.mammal.sound)
-
-    def test_make_sound(self):
-        self.assertEqual("name makes sound", f"{self.mammal.name} makes {self.mammal.sound}")
-
-    def test_get_kingdom(self):
         self.assertEqual("animals", self.mammal._Mammal__kingdom)
 
+    def test_make_sound(self):
+        result = self.mammal.make_sound()
+        self.assertEqual("name makes sound", result)
+
+    def test_get_kingdom(self):
+        self.assertEqual("animals", self.mammal.get_kingdom())
+
     def test_info(self):
-        self.assertEqual("name is of type type", f"{self.mammal.name} is of type {self.mammal.type}")
+        result = self.mammal.info()
+        self.assertEqual("name is of type type", result)
 
 
 if __name__ == "__main__":
