@@ -52,6 +52,10 @@ class StudentTest(TestCase):
         self.assertEqual(["note1", "note2", "new_note"], self.student.courses["web"])
 
     def test_add_notes_to_not_existing_notes_raises(self):
+        with self.assertRaises(Exception) as ex:
+            self.student.add_notes("Basic", "new_note")
+        self.assertEqual("Cannot add notes. Course not found.", str(ex.exception))
+
 
 
 
