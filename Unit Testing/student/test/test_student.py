@@ -56,6 +56,17 @@ class StudentTest(TestCase):
             self.student.add_notes("Basic", "new_note")
         self.assertEqual("Cannot add notes. Course not found.", str(ex.exception))
 
+    def test_leave_course_if_course_name_in_courses(self):
+        result = self.student.leave_course("web")
+        self.assertEqual("Course has been removed", result)
+        self.assertFalse("web" in self.student.courses)
+
+    def test_leave_course_if_course_not_in_courses(self):
+        with self.assertRaises(Exception) as ex:
+            self.student.leave_course("Basic")
+        self.assertEqual("Cannot remove course. Course not found.", str(ex.exception))
+
+
 
 
 
