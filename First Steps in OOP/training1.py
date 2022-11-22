@@ -1,66 +1,46 @@
-def get_new_position(direction, row, col, n, m):
+class PizzaDelivery:
+    def __init__(self, name, price, ingredients):
+        self.name = name
+        self.price = price
+        self.ingredients = ingredients
+        self.ordered = False
 
-    def moving_to_the_opposite_side(r, c, n, m):
-        if r >= n:
-            r = 0
-        if r < 0:
-            r = n - 1
-        if c >= m:
-            c = 0
-        if c < 0:
-            c = m - 1
-        return r, c
-    if direction == "up":
-        row -= 1
-    elif direction == "down":
-        row += 1
-    elif direction == "left":
-        col -= 1
-    elif direction == "right":
-        col += 1
-    if 0 <= row < n and 0 <= col < m:
-        return row, col
-    else:
-        return moving_to_the_opposite_side(row, col, n, m)
+    def add_extra(self, ingredient: str, quantity: int, price_per_quantity):
+        if self.ordered:
+            return f"Pizza {self.name} already prepared, and we can't make any changes!"
+        if ingredient in self.ingredients.keys():
+            self.ingredients[ingredient] += quantity
+        else:
+            self.ingredients[ingredient] = quantity
+        self.price += price_per_quantity * quantity
 
+    def remove_ingredient(self, ingredient, quantity, price_per_quantity):
+        if self.ordered:
+            return f"Pizza {self.name} already prepared, and we can't make any changes!"
+        if ingredient in self.ingredients.keys():
+            if self.ingredients[ingredient] >= quantity:
+                self.ingredients[ingredient] -= quantity
+                self.price -= quantity * price_per_quantity
+            return f"Please check again the desired quantity of {ingredient}!"
+        return f"Wrong ingredient selected! We do not use {ingredient} in {self.name}!"
 
-rows, cols = [int(x) for x in input().split(", ")]
-
-matrix = []
-player_row = 0
-player_col = 0
-
-crafts = {
-    "D": "Christmas decorations",
-    "C": "Cookies",
-    "G": "Gifts"
-}
-items_count = 0
-for i in range(rows):
-    line = input().split()
-    matrix.append(line)
-    if "Y" in line:
-        player_row = i
-        player_col = line.index("Y")
-    items_count += line.count("D") + line.count("C") + line.count("G")
-
-collected_items = 0
-while True:
-    command = input()
-    if command == "End":
-        pass
-    direction = command.split("-")[0]
-    steps = int(command.split("-")[1])
-    for _ in range(steps):
-        matrix[player_row][player_col] = "x"
-        player_row, player_col = get_new_position(direction, player_row, player_col, rows, cols)
-        if matrix[player_row][player_col] in crafts:
-            crafts[matrix[player_row][player_col]] += 1
-            collected_items += 0
-            if collected_items == items_count:
-                break
-        matrix[player_row][player_col] = "Y"
+    def make_order(self):
+        self.ordered = True
+        ingredients_output = []
+        result = f"You've ordered pizza {self.name} prepared with "
+        for ingredient, value in self.ingredients.items():
+            ingredients_output.append(f"{ingredient}: {value}")
+        result += ', '.join(ingredients_output)
+        result += f" and the price will be {self.price}lv."
+        return result
 
 
-
-
+margarita = PizzaDelivery('Margarita', 11, {'cheese': 2, 'tomatoes': 1})
+margarita.add_extra('mozzarella', 1, 0.5)
+margarita.add_extra('cheese', 1, 1)
+margarita.remove_ingredient('cheese', 1, 1)
+print(margarita.remove_ingredient('bacon', 1, 2.5))
+print(margarita.remove_ingredient('tomatoes', 2, 0.5))
+margarita.remove_ingredient('cheese', 2, 1)
+print(margarita.make_order())
+print(margarita.add_extra('cheese', 1, 1))

@@ -60,6 +60,7 @@ class StudentTest(TestCase):
         result = self.student.leave_course("web")
         self.assertEqual("Course has been removed", result)
         self.assertFalse("web" in self.student.courses)
+        self.assertTrue(len(self.student.courses) > 0)
 
     def test_leave_course_if_course_not_in_courses(self):
         with self.assertRaises(Exception) as ex:
