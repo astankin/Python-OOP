@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/demo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Unit Testing/hero_game" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ExamPreparation/Food Orders App" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExamPreparation/Horse Racings" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (OOP) (2)" jdkType="Python SDK" />
