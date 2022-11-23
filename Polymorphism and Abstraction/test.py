@@ -1,22 +1,52 @@
-class Student:
-    def __init__(self, size):
-        self.stu = [None] * size
+class Person:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
 
-    def __setitem__(self, rollno, name):
-        # explicitly defined __setitem__
-        print("Setting name to rollno", rollno)
-        self.stu[rollno] = name
+    def __repr__(self):
+        return f"{self.name} {self.surname}"
 
-    def __getitem__(self, rollno):
-        # explicitly defined __getitem__
-        print("Getting name associated with rollno", rollno)
-        return self.stu[rollno]
+    def __add__(self, other):
+        return Person(self.name, other.surname)
 
 
-s1 = Student(4)
-s1[0] = 'Meghana'
-s1[1] = 'Raju'
-s1[2] = 'Hari'
-s1[3] = 'Sreeja'
-print(s1[0])
-print(s1[0:4])
+class Group:
+    def __init__(self, name, people):
+        self.name = name
+        self.people = people
+
+    def __len__(self):
+        return len(self.people)
+
+    def __add__(self, other):
+        name = f"{self.name} {other.name}"
+        people = self.people + other.people
+        return Group(name, people)
+
+    def __repr__(self):
+        names = [repr(p) for p in self.people]
+
+        return f"Group {self.name} with members {', '.join(names)}"
+
+    def __getitem__(self, index):
+        return f"Person {index}: {repr(self.people[index])}"
+
+
+
+
+p0 = Person('Aliko', 'Dangote')
+p1 = Person('Bill', 'Gates')
+p2 = Person('Warren', 'Buffet')
+p3 = Person('Elon', 'Musk')
+p4 = p2 + p3
+
+first_group = Group('__VIP__', [p0, p1, p2])
+second_group = Group('Special', [p3, p4])
+third_group = first_group + second_group
+
+print(len(first_group))
+print(second_group)
+print(third_group[0])
+
+for person in third_group:
+    print(person)
