@@ -1,4 +1,5 @@
 from project.horse_race_app import HorseRaceApp
+from project.horse_specification.appaloosa import Appaloosa
 
 horseRaceApp = HorseRaceApp()
 print(horseRaceApp.add_horse("Appaloosa", "Spirit", 80))
@@ -9,6 +10,8 @@ print(horseRaceApp.create_horse_race("Summer"))
 print(horseRaceApp.add_horse_to_jockey("Peter", "Appaloosa"))
 print(horseRaceApp.add_horse_to_jockey("Peter", "Thoroughbred"))
 print(horseRaceApp.add_horse_to_jockey("Mariya", "Thoroughbred"))
+horse = Appaloosa("Test", 119)
+Appaloosa.train(horse)
 print(horseRaceApp.add_jockey_to_horse_race("Summer", "Mariya"))
 print(horseRaceApp.add_jockey_to_horse_race("Summer", "Peter"))
 print(horseRaceApp.add_jockey_to_horse_race("Summer", "Mariya"))
