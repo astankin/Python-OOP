@@ -18,18 +18,18 @@ class HorseRaceApp:
             raise Exception(f"Jockey {jockey_name} could not be found!")
 
     def __find_horse(self, horse_type):
-        for horse in self.horses:
+        for horse in reversed(self.horses):
             if type(horse).__name__ == horse_type and not horse.is_taken:
                 return horse
         else:
             raise Exception(f"Horse breed {horse_type} could not be found!")
 
-    def __find_race(self, race_type):
+    def __find_race(self, race_type_):
         for race in self.horse_races:
-            if race.race_type == race_type:
+            if race.race_type == race_type_:
                 return race
         else:
-            raise Exception(f"Race {race_type} could not be found!")
+            raise Exception(f"Race {race_type_} could not be found!")
 
     def add_horse(self, horse_type: str, horse_name: str, horse_speed: int):
         if horse_type not in ["Appaloosa", "Thoroughbred"]:
@@ -56,7 +56,7 @@ class HorseRaceApp:
 
     def create_horse_race(self, race_type: str):
         if race_type in [race.race_type for race in self.horse_races]:
-            raise Exception("Race {race type} has been already created!")
+            raise Exception(f"Race {race_type} has been already created!")
         new_race = HorseRace(race_type)
         self.horse_races.append(new_race)
         return f"Race {race_type} is created."
