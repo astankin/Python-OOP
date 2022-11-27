@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class Astronaut(ABC):
+    decrease_coefficient = 10
 
+    @abstractmethod
     def __init__(self, name: str, oxygen: int):
         self.name = name
         self.oxygen = oxygen
@@ -18,13 +20,11 @@ class Astronaut(ABC):
             raise ValueError("Astronaut name cannot be empty string or whitespace!")
         self.__name = value
 
-    @abstractmethod
     def breathe(self):
-        pass
+        self.oxygen -= self.decrease_coefficient
 
-    @abstractmethod
     def increase_oxygen(self, amount: int):
-        pass
+        self.oxygen += amount
 
     def __str__(self):
         return f"Name: {self.name}\n" \
