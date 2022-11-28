@@ -48,6 +48,7 @@ class Table(ABC):
         self.is_reserved = False
 
     def free_table_info(self):
-        result = [f"Table: {self.table_number}", f"Type: {self.__class__.__name__}", f"Capacity: {self.capacity}"]
         if not self.is_reserved:
-            return '\n'.join(result)
+            return f"Table: {self.table_number}\n" +\
+                   f"Type: {self.__class__.__name__}\n" +\
+                   f"Capacity: {self.capacity}"
