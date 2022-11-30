@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class BaseAquarium(ABC):
-    @abstractmethod
+
     def __init__(self, name: str, capacity: int):
         self.name = name
         self.capacity = capacity
@@ -29,11 +29,11 @@ class BaseAquarium(ABC):
 
     def add_fish(self, fish):
         if self.capacity == len(self.fish):
-            return f"Not enough capacity."
+            return "Not enough capacity."
         if self.fish_type != fish.__class__.__name__:
             return 'Water not suitable.'
         self.fish.append(fish)
-        return f"Successfully added {type(fish).__name__} to {self.name}."
+        return f"Successfully added {fish.__class__.__name__} to {self.name}."
 
     def remove_fish(self, fish):
         self.fish.remove(fish)
@@ -45,19 +45,13 @@ class BaseAquarium(ABC):
         for fish in self.fish:
             fish.eat()
 
-    # def __str__(self):
-    #     result = f"{self.name}:\n"
-    #     if not self.fish:
-    #         result += "Fish: none\n"
-    #     else:
-    #         result += f"Fish: {', '.join([fish.name for fish in self.fish])}\n"
-    #     result += f"Decorations: {len(self.decorations)}\n"
-    #     result += f"Comfort: {self.calculate_comfort()}\n"
-    #     return result.strip()
-
     def __str__(self):
-        fish_status = 'none' if len(self.fish) == 0 else ' '.join([f.name for f in self.fish])
-        return f'{self.name}:\n' + \
-               f'Fish: {fish_status}\n' + \
-               f'Decorations: {len(self.decorations)}\n' + \
-               f'Comfort: {self.calculate_comfort()}'
+        result = [f"{self.name}:"]
+        if not self.fish:
+            result.append("Fish: none")
+        else:
+            result.append(f"Fish: {' '.join([fish.name for fish in self.fish])}")
+        result.append(f"Decorations: {len(self.decorations)}")
+        result.append(f"Comfort: {self.calculate_comfort()}")
+        return '\n'.join(result)
+

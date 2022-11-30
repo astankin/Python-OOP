@@ -7,7 +7,5 @@ class BaseDecoration(ABC):
         self.comfort = comfort
         self.price = price
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}"
 
 

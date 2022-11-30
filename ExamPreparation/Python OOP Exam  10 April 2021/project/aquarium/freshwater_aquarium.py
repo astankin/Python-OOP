@@ -3,7 +3,7 @@ from project.fish.freshwater_fish import FreshwaterFish
 
 
 class FreshwaterAquarium(BaseAquarium):
-    def __init__(self, name: str,):
+    def __init__(self, name: str):
         super().__init__(name, 50)
 
     @property

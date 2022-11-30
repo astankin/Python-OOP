@@ -3,7 +3,7 @@ from project.fish.saltwater_fish import SaltwaterFish
 
 
 class SaltwaterAquarium(BaseAquarium):
-    def __init__(self, name: str,):
+    def __init__(self, name: str):
         super().__init__(name, 25)
 
     @property
