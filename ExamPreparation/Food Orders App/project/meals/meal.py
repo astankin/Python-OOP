@@ -32,5 +32,5 @@ class Meal(ABC):
         pass
 
     def __repr__(self):
-        return self.__name
+        return self.name
 

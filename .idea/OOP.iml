@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Unit Testing/hero_game" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/First Steps in OOP/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ExamPreparation/Python OOP Retake Exam – 23.08.2021" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ExamPreparation/Python OOP Retake Exam 22 Aug 2020" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExamPreparation/Practice" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
