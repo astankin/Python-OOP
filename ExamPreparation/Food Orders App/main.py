@@ -25,6 +25,5 @@ print(food_orders_app.add_meals_to_shopping_cart('0899999999', **food))
 additional_food = {"Risotto with Wild Mushrooms": 2,
                    "Tortilla with Beef and Pork": 2}
 print(food_orders_app.add_meals_to_shopping_cart('0899999999', **additional_food))
-print(food_orders_app.cancel_order("0899999999"))
 print(food_orders_app.finish_order("0899999999"))
 print(food_orders_app)
