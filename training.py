@@ -1,5 +1,12 @@
-food_orders = [1, 2, 3, 4]
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
-print(sum(food for food in food_orders))
-print(sum([food for food in food_orders]))
+@app.get("/")
+def home():
+    return {"Data": "Test"}
+
+@app.get("/about")
+def about():
+    return {"Data": "About"}
