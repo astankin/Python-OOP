@@ -1,7 +1,17 @@
-n = int(input())
-count = 65
-for i in range(n + 1):
-    for j in range(i):
-        print(chr(count), end=" ")
-        count += 1
-    print()
+class SchoolMember():
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+class Teacher(SchoolMember):
+    def __init__(self, name, age, salary, courses):
+        super().__init__(name, age)
+        self.salary = salary
+        self.courses = courses
+
+
+class Student(SchoolMember):
+    def __init__(self, name, age, courses):
+        super().__init__(name, age)
+        self.courses = courses
