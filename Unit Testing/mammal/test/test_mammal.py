@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from project.mammal import Mammal
+from mammal.project.mammal import Mammal
 
 
 class MammalTest(TestCase):
